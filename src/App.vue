@@ -1,18 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <Triangle/>
+  <Replace/>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+<script setup lang="ts">
+import Triangle from './components/Triangle.vue'
+import Replace from './components/Replace.vue'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
+
+function ran(){
+  const ar = []
+  while(ar.length < 7){
+    const r = Math.floor(Math.random() * 9)
+    if (ar.indexOf(r) === -1) ar.push(r)
   }
-});
+  return ar
+}
+const ar = [1,2,3,4,5]
+const msg = adaptive()
+function adaptive() {
+  const arg = Array.from(arguments)
+  return arg.reduce((acum, curr) => {
+    acum += curr
+    return acum
+  }, 0)
+}
 </script>
 
 <style>
@@ -20,8 +32,8 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  white-space: pre-wrap;
 }
 </style>
