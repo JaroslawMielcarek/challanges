@@ -1,12 +1,11 @@
 <template>
 <h1>1. Looping a triangle Write a loop that output the following triangle:</h1>
-{{ ejemplo }}
+<p class="example">{{ ejemplo }}</p>
 <h2>1.1 solution</h2>
-  <p>a. while loop</p>
-  <p>{{ triangleSimple }}</p>
+  <label>a. while loop</label>
   <p>{{ triangleSimple() }}</p>
-  <p>b. reduce</p>
-  {{ triangleReduce() }}
+  <label>b. reduce</label>
+  <p>{{ triangleReduce() }}</p>
 </template>
 
 <script setup lang="ts">
@@ -26,10 +25,9 @@ function triangleSimple(){
   return str
 }
 function triangleReduce(){
-  const ar = Array.from(Array(7).keys())
-  return ar.reduce((acc, curr, index) => {
-    acc += '#'.repeat(index + 1) + '\n'
-    return acc
-  },'')
+  return Array.from(Array(7).keys()).reduce((acc, curr, index) => acc + '#'.repeat(index + 1) + '\n','')
 }
 </script>
+<style scoped>
+p { white-space: pre-wrap; }
+</style>
